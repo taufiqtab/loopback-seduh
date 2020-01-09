@@ -1,7 +1,7 @@
-import {LoopbackSeduhApplication} from './application';
-import {ApplicationConfig} from '@loopback/core';
+import { LoopbackSeduhApplication } from './application';
+import { ApplicationConfig } from '@loopback/core';
 
-export {LoopbackSeduhApplication};
+export { LoopbackSeduhApplication };
 
 export async function main(options: ApplicationConfig = {}) {
   const app = new LoopbackSeduhApplication(options);
