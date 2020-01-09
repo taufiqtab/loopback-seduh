@@ -44,7 +44,10 @@ export class HelloController {
     },
   })
   async test(): Promise<any> {
-    return this.userRepository.dataSource.execute('SELECT * FROM user');
+    var res = this.userRepository.dataSource.execute('SELECT u.nama, ud.first_name FROM user u JOIN usr_detail ud on ud.userid = u.id');
+    var arr = Array();
+    arr = await res;
+    return await arr[0].first_name;
   }
 
   // @post('/payments')
