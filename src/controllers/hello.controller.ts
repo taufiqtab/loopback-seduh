@@ -36,6 +36,17 @@ export class HelloController {
     return res.name + " Terbentuk";
   }
 
+  @get('/test', {
+    responses: {
+      '200': {
+        description: 'test for executing query',
+      },
+    },
+  })
+  async test(): Promise<any> {
+    return this.userRepository.dataSource.execute('SELECT * FROM user');
+  }
+
   // @post('/payments')
   // pay(@requestBody() result: any): Object {
   //   result.status = "success";
