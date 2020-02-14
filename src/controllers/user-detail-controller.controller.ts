@@ -17,20 +17,20 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {UserDetail} from '../models';
-import {UserDetailRepository} from '../repositories';
+import { UserDetail } from '../models';
+import { UserDetailRepository } from '../repositories';
 
 export class UserDetailControllerController {
   constructor(
     @repository(UserDetailRepository)
-    public userDetailRepository : UserDetailRepository,
-  ) {}
+    public userDetailRepository: UserDetailRepository,
+  ) { }
 
   @post('/user-details', {
     responses: {
       '200': {
         description: 'UserDetail model instance',
-        content: {'application/json': {schema: getModelSchemaRef(UserDetail)}},
+        content: { 'application/json': { schema: getModelSchemaRef(UserDetail) } },
       },
     },
   })
@@ -54,7 +54,7 @@ export class UserDetailControllerController {
     responses: {
       '200': {
         description: 'UserDetail model count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -72,7 +72,7 @@ export class UserDetailControllerController {
           'application/json': {
             schema: {
               type: 'array',
-              items: getModelSchemaRef(UserDetail, {includeRelations: true}),
+              items: getModelSchemaRef(UserDetail, { includeRelations: true }),
             },
           },
         },
@@ -89,7 +89,7 @@ export class UserDetailControllerController {
     responses: {
       '200': {
         description: 'UserDetail PATCH success count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -97,7 +97,7 @@ export class UserDetailControllerController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(UserDetail, {partial: true}),
+          schema: getModelSchemaRef(UserDetail, { partial: true }),
         },
       },
     })
@@ -113,7 +113,7 @@ export class UserDetailControllerController {
         description: 'UserDetail model instance',
         content: {
           'application/json': {
-            schema: getModelSchemaRef(UserDetail, {includeRelations: true}),
+            schema: getModelSchemaRef(UserDetail, { includeRelations: true }),
           },
         },
       },
@@ -123,7 +123,9 @@ export class UserDetailControllerController {
     @param.path.number('id') id: number,
     @param.query.object('filter', getFilterSchemaFor(UserDetail)) filter?: Filter<UserDetail>
   ): Promise<UserDetail> {
+    // return this.userDetailRepository.findById(id, { include: [{ relation: 'user' }] });
     return this.userDetailRepository.findById(id, filter);
+
   }
 
   @patch('/user-details/{id}', {
@@ -138,7 +140,7 @@ export class UserDetailControllerController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(UserDetail, {partial: true}),
+          schema: getModelSchemaRef(UserDetail, { partial: true }),
         },
       },
     })

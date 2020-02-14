@@ -10,7 +10,7 @@ import {
   UserDetail,
   User,
 } from '../models';
-import {UserDetailRepository} from '../repositories';
+import { UserDetailRepository } from '../repositories';
 
 export class UserDetailUserController {
   constructor(
@@ -24,7 +24,7 @@ export class UserDetailUserController {
         description: 'User belonging to UserDetail',
         content: {
           'application/json': {
-            schema: {type: 'array', items: getModelSchemaRef(User)},
+            schema: { type: 'array', items: getModelSchemaRef(User) },
           },
         },
       },

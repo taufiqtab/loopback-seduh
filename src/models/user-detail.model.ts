@@ -1,5 +1,5 @@
 import { Entity, model, property, belongsTo } from '@loopback/repository';
-import { User } from './user.model';
+import { User, UserWithRelations } from './user.model';
 
 @model(
   { name: "usr_detail" }
@@ -34,6 +34,7 @@ export class UserDetail extends Entity {
 
 export interface UserDetailRelations {
   // describe navigational properties here
+  user: UserWithRelations
 }
 
 export type UserDetailWithRelations = UserDetail & UserDetailRelations;
